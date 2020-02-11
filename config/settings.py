@@ -36,6 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'bootstrap4',
 ]
 
@@ -47,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'BBS.middleware.auth.LoginRequiredMiddleware',
 ]
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
@@ -124,3 +129,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+# 動かしているDjangoサイトを識別するためのID
+SITE_ID = 1
+
+# ログイン・ログアウト時のリダイレクト先
+LOGIN_REDIRECT_URL = '/bbs/menu'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/bbs/accounts/login'
+
+# ログアウトをGETで行うようにする
+ACCOUNT_LOGOUT_ON_GET = True
