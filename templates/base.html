@@ -1,0 +1,29 @@
+<!doctype html>
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='slim' %}
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block page_title %}{% endblock %}</title>
+
+    {# --- css --- #}
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/bbs/menu">Django 掲示板</a>
+</nav>
+
+<main role="main" class="container" style="padding-top: 60px">
+    {% include '_message.html' %}
+    {% block content %}{% endblock %}
+</main>
+{# --- js --- #}
+{% block extra_js %}{% endblock %}
+</body>
+</html>
